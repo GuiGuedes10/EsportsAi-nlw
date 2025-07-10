@@ -190,3 +190,18 @@ select:focus, input:focus {
         opacity: 1;
     }
 }
+
+.able {
+    background-color: #121212;
+    border-radius: 0.5rem;
+    padding: 0.675rem;
+    margin-top: 30px;
+    width: 100%;
+    color: white;
+    box-sizing: border-box;
+    display: flex;
+
+    :link{
+        color: #9147ff;
+    }
+}

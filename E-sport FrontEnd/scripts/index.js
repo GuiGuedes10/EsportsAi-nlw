@@ -6,9 +6,11 @@ const QuestAi = async (gameSelected, questionInput, apiKey) =>{
     ##REGRAS
     - não inventar respostas, apenas responder a pergunta, caso não saiba a resposta, diga que não sabe.
     - não responder perguntas que não sejam sobre o jogo ${gameSelected}
-    - caso a resposta seja muito longa, resuma a resposta (máximo 700 caracteres)
+    - caso a resposta seja muito longa, resuma a resposta (máximo 900 caracteres)
     - responda com base na data (data: ${new Date().toLocaleDateString()})
+    - caso não saiba qual é o patch atual, use o patch mais recente do jogo ${gameSelected}
     - não faça saudações, não se apresente, não se despedaça, não faça perguntas, não faça comentários sobre o jogo ou a pergunta.
+    - caso a pergunta seja sobre cenario competivo de counter-strike 2, pode levar em consideração o cenário de CS:GO, mas sempre informando que é sobre CS:GO.
     ##FORMATO
     - Respostas médias e objetivas
     - Respostas em português
@@ -64,6 +66,8 @@ async function SendQuestion(){
 
     try {
         const data = await QuestAi(gameSelected, questionInput, apiKey);
+        responseContainer.classList.add("able");
+        responseContainer.querySelector(".response-content").innerHTML = "";
         responseContainer.querySelector(".response-content").innerHTML = markdownToHtml(data);
         
     } catch (error) {
