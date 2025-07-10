@@ -30,7 +30,7 @@ section > div {
     max-width: 800px;
     margin: 40px auto;
     padding: 1.5rem;
-    background-color: black;
+    background-color: #2A2634;
     border-radius: 8px;
 
     display: flex;
@@ -98,7 +98,11 @@ button {
     border-radius: 0.5rem;
     margin-top: 10px;
     font: bold; 
+}
 
+button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
 }
 
 .input-row {
@@ -162,4 +166,27 @@ button {
     font-size: 0.875rem;
     background-color: #00000066;
     box-sizing: border-box;
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+select:focus, input:focus {
+    border-color: white;
+    background-color: #121212;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
