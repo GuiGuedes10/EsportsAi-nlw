@@ -4,7 +4,7 @@ const QuestAi = async (gameSelected, questionInput, apiKey) =>{
     const question = `
     tenho uma dúvida sobre o jogo ${gameSelected}, ${questionInput}
     ##REGRAS
-    - não inventar respostas, apenas responder a pergunta, caso não saiba a resposta, diga que não sabe.
+    - não inventar respostas, apenas responder a pergunta, caso não saiba a resposta, explique o porque não sabe.
     - não responder perguntas que não sejam sobre o jogo ${gameSelected}
     - caso a resposta seja muito longa, resuma a resposta (máximo 900 caracteres)
     - responda com base na data (data: ${new Date().toLocaleDateString()})
@@ -18,6 +18,9 @@ const QuestAi = async (gameSelected, questionInput, apiKey) =>{
     - Respostas com links de fontes confiáveis
     - Respostas sem emojis
     - caso a pergunta seja sobre itens, seja direto e objetivo, responda com o nome do item, o preço e a ordem da build.
+    - caso a pergunta seja sobre uma pessoa real que faça (ou ja fez) parte do cenario competitivo busque por todas as formas colocando maiusculo ou minusco entre as letras
+    - caso a pergunta seja sobre uma pessoa real que faça parte do cenário competitivo, nunca digue que a pessoa não possui relevancia para o cenário competitivo.
+    - caso a pergunta seja sobre uma pessoa real que faça parte do cenário competitivo, informe o nome completo, a nacionalidade, o time atual e o cargo atual.
     ##fontes
     - Exemplos de sites: op.gg, leagueofgraphs, lolalytics, u.gg, porofessor.gg,
     cssstats.gg, csgo-stats.gg, csgo-tracker.gg, cs2-stats.gg, cs2-tracker.gg, tracker.gg, esportspedia.com, liquipedia.net, esportspedia.gg, esportspedia.org, esportspedia.io, esportspedia.live, esportspedia.pro
@@ -63,6 +66,9 @@ async function SendQuestion(){
     sendButton.disabled = true;
     sendButton.textContent = "Enviando...";
     sendButton.classList.add("loading");
+
+    responseContainer.querySelector(".response-content").innerHTML = "";
+    responseContainer.classList.remove("able");
 
     try {
         const data = await QuestAi(gameSelected, questionInput, apiKey);

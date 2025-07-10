@@ -54,6 +54,9 @@
     <script>
         const passwordInput = document.getElementById('geminiaipassword');
         const toggleIcon = document.getElementById('passwordicon');
+        const gameSelected = document.getElementById('gameSelected');
+        const questionInput = document.getElementById('questionInput');
+        const responseContainer = document.getElementById('responseContainer');
 
         toggleIcon.addEventListener('click', function () {
             const isPasswordVisible = passwordInput.type === 'text';
@@ -61,6 +64,12 @@
             toggleIcon.classList.toggle('bi-eye');
             toggleIcon.classList.toggle('bi-eye-slash-fill');
         });
+
+        gameSelected.addEventListener('change', function() {
+            questionInput.value = "";
+            responseContainer.querySelector(".response-content").innerHTML = "";
+            responseContainer.classList.remove("able");
+        })
     </script>
 </body>
 </html>
