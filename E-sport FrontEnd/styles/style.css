@@ -192,7 +192,11 @@ select:focus, input:focus {
 }
 
 .able {
+    background-image: url(../assets/background-galaxy.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     background-color: #121212;
+    background-position: top center;
     border-radius: 0.5rem;
     padding: 0.675rem;
     margin-top: 30px;
